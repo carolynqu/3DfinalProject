@@ -308,6 +308,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8630480851015962023, guid: c5ecd78c3dd8a42a28939909d6c89995, type: 3}
+      propertyPath: movement.gravity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630480851015962023, guid: c5ecd78c3dd8a42a28939909d6c89995, type: 3}
+      propertyPath: jumping.baseHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630480851015962023, guid: c5ecd78c3dd8a42a28939909d6c89995, type: 3}
+      propertyPath: jumping.extraHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630480851015962023, guid: c5ecd78c3dd8a42a28939909d6c89995, type: 3}
+      propertyPath: movement.maxForwardSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630480851015962023, guid: c5ecd78c3dd8a42a28939909d6c89995, type: 3}
+      propertyPath: movement.maxSidewaysSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630480851015962023, guid: c5ecd78c3dd8a42a28939909d6c89995, type: 3}
+      propertyPath: movement.maxBackwardsSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8630480851015962025, guid: c5ecd78c3dd8a42a28939909d6c89995, type: 3}
       propertyPath: m_RootOrder
       value: 2
