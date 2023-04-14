@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: eda181a7de27c4aefb3797ba06cafcdc
+guid: 42c4d3aef271944708cafb45bec93600
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - cam: {instanceID: 0}
-  - attackPoint: {instanceID: 0}
-  - objectToThrow: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
