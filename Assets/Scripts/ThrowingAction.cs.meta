@@ -3,7 +3,10 @@ guid: eda181a7de27c4aefb3797ba06cafcdc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cam: {instanceID: 0}
+  - attackPoint: {instanceID: 0}
+  - objectToThrow: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

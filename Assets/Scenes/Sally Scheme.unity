@@ -296,13 +296,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda181a7de27c4aefb3797ba06cafcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 411714077}
+  cam: {fileID: 411714077}
   attackPoint: {fileID: 1734926235}
-  objectToThrow: {fileID: 730191288402984916, guid: 47c5dc496076b42f997721aaf719c810, type: 3}
+  objectToThrow: {fileID: 6947757604045851351, guid: b61fe63ff4489465c8bbe8aaadd95205, type: 3}
   totalThrows: 100
   throwCoolDown: 0.1
   throwKey: 9
-  throwForce: 70
+  throwForce: -30
   throwUpwardForce: 0
 --- !u!1 &1494923075
 GameObject:
@@ -512,14 +512,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734926234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 1.12}
+  m_LocalRotation: {x: 0.0024280518, y: -0.03684394, z: 0.0026232416, w: -0.99931467}
+  m_LocalPosition: {x: 0, y: -0.049999952, z: 1.12}
   m_LocalScale: {x: 0.031689532, y: 0.031689532, z: 0.031689532}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 411714077}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.267, y: 364.224, z: -0.311}
 --- !u!135 &1734926236
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -595,9 +595,10 @@ GameObject:
   - component: {fileID: 2146764438}
   - component: {fileID: 2146764437}
   - component: {fileID: 2146764436}
+  - component: {fileID: 2146764440}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,3 +681,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2146764440
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146764435}
+  serializedVersion: 2
+  m_Mass: 300
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
