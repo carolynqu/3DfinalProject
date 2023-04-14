@@ -6,7 +6,7 @@ using TMPro;
 public class ThrowingAction : MonoBehaviour
 {
 
-    public Transform camera;
+    public Transform cam;
     public Transform attackPoint;
     public GameObject objectToThrow;
 
@@ -27,6 +27,7 @@ public class ThrowingAction : MonoBehaviour
     void Start()
     {
         readyToThrow = true;
+        
 
     }
 
@@ -45,13 +46,23 @@ public class ThrowingAction : MonoBehaviour
     private void Throw()
     {
         //instatiate object to throw 
-        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, camera.rotation);
+        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
 
         //get rigidbody component
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
+        //calculate the direction
+        Vector3 forceDirection = cam.transform.forward;
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(cam.position, cam.forward, out hit , 500f))
+        {
+            forceDirection = (hit.point - attackPoint.position).normalized;
+        }
+
         //add force
-        Vector3 forceToAdd = camera.transform.forward * throwForce + transform.up * throwUpwardForce;
+        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
 
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 
