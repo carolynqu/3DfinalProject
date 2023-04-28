@@ -7,10 +7,6 @@ public class ProjectileScript : MonoBehaviour
 
     public GameObject ball;
 
-
-
-
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
