@@ -10,6 +10,9 @@ public class PowerBar : MonoBehaviour
     public float loopInterval = 0.5f; // Interval between sprite changes
     private float timer = 0f; // Timer to track the interval
 
+    private bool isLooping = false; // Flag to track if looping is active
+
+
     private void Start()
     {
         // Assign the Image component from the same GameObject
@@ -18,18 +21,35 @@ public class PowerBar : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= loopInterval)
+        if (Input.GetKey(KeyCode.Tab))
         {
-            // Time interval reached, move to the next sprite
-            timer = 0f;
-            currentIndex++;
-            if (currentIndex >= sprites.Length)
-            {
-                currentIndex = 0; // Loop back to the first sprite
-            }
-            ShowCurrentSprite();
+            isLooping = true;
         }
+        else
+        {
+            isLooping = false;
+            currentIndex = 1;
+            timer = 0f;
+            image.sprite = sprites[0];
+        }
+
+
+        if (isLooping)
+        {
+            timer += Time.deltaTime;
+            if (timer >= loopInterval)
+            {
+                // Time interval reached, move to the next sprite
+                timer = 0f;
+                currentIndex++;
+                if (currentIndex >= sprites.Length)
+                {
+                    currentIndex = 1; // Loop back to the first sprite
+                }
+                ShowCurrentSprite();
+            }
+        }
+
     }
 
     private void ShowCurrentSprite()
