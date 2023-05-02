@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Pixel : MonoBehaviour
 {
+    public GameObject ballObject;
+    public Material[] BlockColors;
+    private Material currentColor;
     // Start is called before the first frame update
     void Start()
     {
+        currentColor = BlockColors[5];
     }
 
     // Update is called once per frame
@@ -16,35 +20,35 @@ public class Pixel : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (ColorSwitcher.black)
+        if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("Black"))
         {
-           
+            currentColor = BlockColors[0];
         }
-        if (ColorSwitcher.blue)
+        if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("Blue"))
         {
-            
+            currentColor = BlockColors[1];
         }
-        if (ColorSwitcher.green)
+        if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("Green"))
         {
-           
+            currentColor = BlockColors[2];
         }
-        if (ColorSwitcher.orange)
+        if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("Orange"))
         {
-            
+            currentColor = BlockColors[3];
         }
-        if (ColorSwitcher.red)
+        if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("Red"))
         {
-            
+            currentColor = BlockColors[4];
         }
-        if (ColorSwitcher.white)
+        if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("White"))
         {
-            
+            currentColor = BlockColors[5];
         }
-        if (ColorSwitcher.yellow)
+        if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("Yellow"))
         {
-            
+            currentColor = BlockColors[6];
 
         }
-        GetComponent<MeshRenderer>().material.color = new Color(0f, 0f, 0f, 1f);
+        GetComponent<Renderer>().material = currentColor;
     }
 }

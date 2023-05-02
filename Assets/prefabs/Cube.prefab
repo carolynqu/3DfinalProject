@@ -127,3 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8d3aff8b82a441a926311f9f730803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballObject: {fileID: 0}
+  BlockColors:
+  - {fileID: 2100000, guid: a40dd02a823c543518abef69b02e7a75, type: 2}
+  - {fileID: 2100000, guid: 05937bea0a34c4b31a7309ece4938a4c, type: 2}
+  - {fileID: 2100000, guid: 33bde271ae8624bc69ce0a9ae593c397, type: 2}
+  - {fileID: 2100000, guid: 83940ed8fc4ae477ea23dab801b3232e, type: 2}
+  - {fileID: 2100000, guid: 7e092cbff41ae41b6848ba3a8b62ac6e, type: 2}
+  - {fileID: 2100000, guid: 3377280c11339471f87f3171aef51305, type: 2}
+  - {fileID: 2100000, guid: defed88e8e575419695cf330f45480c5, type: 2}
