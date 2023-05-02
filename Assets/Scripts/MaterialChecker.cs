@@ -6,7 +6,7 @@ public class MaterialChecker : MonoBehaviour
 {
 
     Color black = new Color(0, 0, 0);
-    Color blue = new Color (5, 172, 255);
+    Color blue = new Color(5, 172, 255);
     Color green = new Color(67, 255, 38);
     Color orange = new Color(255, 149, 0);
     Color red = new Color(255, 38, 38);
@@ -20,6 +20,11 @@ public class MaterialChecker : MonoBehaviour
     public static string r = "red";
     public static string w = "white";
     public static string y = "yellow";
+
+
+    public Material[] Colors = new Material[7];
+
+    public GameObject[] CubeArray = new GameObject[16];
 
 
     public string[,] ColorSolArr1 = new string[8, 8] { { o, o, o, w, w, o, o, o },
@@ -70,35 +75,97 @@ public class MaterialChecker : MonoBehaviour
                                                         { b, y, y, o, y, o, y, b },
                                                         { g, g, y, o, y, y, o, g }};
 
-    public string[,] CurrColor = new string[7, 7];
+
+    public string[,] ColorTestArr = new string[4, 4] { { w, w, w, w }, { w, w, w, w }, { w, w, w, w }, { w, w, w, bl } };
 
 
 
+    public string[,] CurrColor = new string[8, 8];
 
 
 
+    public void Update()
+    {
+        VerifyColor(ColorTestArr, CubeArray);
+    }
 
 
 
-
-
-
-    public bool VerifyCubes(string[,] ColorSolArr , string[,] CurrColor)
+    public bool VerifyCubes(string[,] ColorSolArr, string[,] CurrColor)
     {
 
-        for (int i = 0; i < ColorSolArr.GetLength(0); i++)
+        for (int i = 0; i < 9; i++)
         {
-            for (int j = 0; j < ColorSolArr.GetLength(1); j++)
+            for (int j = 0; j < 9; j++)
             {
 
                 if (!ColorSolArr[i, j].Equals(CurrColor[i, j]))
                 {
                     return false;
                 }
-                
+
             }
 
         }
         return true;
+    }
+
+
+
+    public bool VerifyColor(string[,] ColorSolArr, GameObject[] CubeArr)
+    {
+        for (int i = 0; i < ColorSolArr.Length; i++)
+        {
+            for (int j = 0; j < ColorSolArr.Length; j++)
+            {
+                for (int k = 0; k < CubeArr.Length; k++)
+                {
+                    if (!getColor(CubeArr[k]).Equals(ColorSolArr[i, j]))
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    private string getColor(GameObject cube)
+    {
+        Renderer color = cube.GetComponent<Renderer>();
+        if (color.Equals(Colors[0]))
+        {
+            return "black";
+        }
+
+        if (color.Equals(Colors[1]))
+        {
+            return "blue";
+        }
+
+        if (color.Equals(Colors[2]))
+        {
+            return "green";
+        }
+
+        if (color.Equals(Colors[3]))
+        {
+            return "orange";
+        }
+
+        if (color.Equals(Colors[4]))
+        {
+            return "red";
+        }
+
+        if (color.Equals(Colors[5]))
+        {
+            return "white";
+        }
+
+        if (color.Equals(Colors[6]))
+        {
+            return "yellow";
+        }
+        return null;
     }
 }
