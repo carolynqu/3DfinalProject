@@ -83,7 +83,7 @@ public class MaterialChecker : MonoBehaviour
 
 
 
-    public bool VerifyCubes()
+    public bool VerifyCubes(string[,] ColorSolArr , string[,] CurrColor)
     {
 
         for (int i = 0; i < ColorSolArr.GetLength(0); i++)
