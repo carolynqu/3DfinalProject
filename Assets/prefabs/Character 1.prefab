@@ -233,7 +233,7 @@ MonoBehaviour:
     hitPoint: {x: 0, y: 0, z: 0}
     lastHitPoint: {x: Infinity, y: 0, z: 0}
   jumping:
-    enabled: 1
+    enabled: 0
     baseHeight: 1
     extraHeight: 4.1
     perpAmount: 0
