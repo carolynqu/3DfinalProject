@@ -24,7 +24,7 @@ public class MaterialChecker : MonoBehaviour
 
     public Material[] Colors = new Material[7];
 
-    public GameObject[] CubeArray = new GameObject[16];
+    public GameObject[] CubeArray = new GameObject[64];
 
 
     public string[,] ColorSolArr1 = new string[8, 8] { { o, o, o, w, w, o, o, o },
