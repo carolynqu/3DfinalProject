@@ -15,7 +15,7 @@ public class ThrowingAction : MonoBehaviour
     public float throwCoolDown;
 
     public KeyCode throwKey = KeyCode.Mouse0;
-    public float throwForce;
+    public float throwSpeed;
     public float throwUpwardForce;
 
     bool readyToThrow;
@@ -62,7 +62,7 @@ public class ThrowingAction : MonoBehaviour
         }
 
         //add force
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
+        Vector3 forceToAdd = forceDirection * throwSpeed + transform.up ;
 
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 
@@ -70,6 +70,10 @@ public class ThrowingAction : MonoBehaviour
 
         //implement throw cooldown
         Invoke(nameof(ResetThrows), throwCoolDown);
+
+
+
+
     }
 
 

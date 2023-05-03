@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8076515951656011646}
   - component: {fileID: 4237444522997588587}
   - component: {fileID: 6960444885212404900}
-  - component: {fileID: 8370074730142940938}
   - component: {fileID: -3840653494943800109}
   - component: {fileID: 6846098376550799264}
+  - component: {fileID: -7136409519919371217}
   m_Layer: 0
   m_Name: Colored Projectile
   m_TagString: Untagged
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8370074730142940938
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947757604045851351}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-3840653494943800109
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +115,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 6947757604045851351}
+--- !u!135 &-7136409519919371217
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947757604045851351}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
