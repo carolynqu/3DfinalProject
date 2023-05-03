@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MaterialChecker : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class MaterialChecker : MonoBehaviour
     public Material[] Colors = new Material[7];
 
     public GameObject[] CubeArray = new GameObject[64];
+
+    public string nextLevel; 
 
 
     public string[,] ColorSolArr1 = new string[8, 8] { { o, o, o, w, w, o, o, o },
@@ -75,8 +78,15 @@ public class MaterialChecker : MonoBehaviour
                                                         { b, y, y, o, y, o, y, b },
                                                         { g, g, y, o, y, y, o, g }};
 
+    public string[,] ColorSolArr6 = new string[8, 8] { {w, w, w, w, w, w, w, w },
+                                                        { w, w, w, w, w, w, w, w },
+                                                        { w, w, w, w, w, w, w, w },
+                                                        { w, w, w, w, w, w, w, w },
+                                                        { w, w, w, w, w, w, w, w },
+                                                        { w, w, w, w, w, w, w, w },
+                                                        { w, w, w, w, w, w, w, w },
+                                                        { w, w, w, w, w, w, w, b }};
 
-    public string[,] ColorTestArr = new string[4, 4] { { w, w, w, w }, { w, w, w, w }, { w, w, w, w }, { w, w, w, bl } };
 
 
 
@@ -86,7 +96,7 @@ public class MaterialChecker : MonoBehaviour
 
     public void Update()
     {
-        VerifyColor(ColorTestArr, CubeArray);
+        VerifyColor(ColorSolArr6, CubeArray);
     }
 
 
@@ -107,6 +117,7 @@ public class MaterialChecker : MonoBehaviour
             }
 
         }
+
         return true;
     }
 
@@ -125,6 +136,7 @@ public class MaterialChecker : MonoBehaviour
                 }
             }
         }
+        SceneManager.LoadScene(nextLevel);
         return true;
     }
 
