@@ -296,7 +296,7 @@ MonoBehaviour:
   cam: {fileID: 7544073492139690794}
   attackPoint: {fileID: 4214376208223536757}
   objectToThrow: {fileID: 6947757604045851351, guid: b61fe63ff4489465c8bbe8aaadd95205, type: 3}
-  totalThrows: 100
+  totalThrows: 10000
   throwCoolDown: 0.1
   throwKey: 9
   throwSpeed: 45

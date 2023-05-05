@@ -19,9 +19,7 @@ public class MaterialChecker : MonoBehaviour
     public Material[] Colors = new Material[7];
 
     //array of cubes in the game
-    public GameObject[] CubeArray = new GameObject[64];
-
-    public string nextLevel; 
+    public GameObject[] CubeArray = new GameObject[64]; 
 
 
     //arrays of the correct images as colors and strings
@@ -54,55 +52,84 @@ public class MaterialChecker : MonoBehaviour
                                                          y, y, bl, y, y, bl, y, y };
 
 
-    public string[,] ColorSolArr4 = new string[8, 8] { {b, b, b, b, b, b, b, b },
-                                                        { b, b, w, w, w, w, b, b },
-                                                        { b, b, bl, w, w, bl, b, b },
-                                                        { b, b, o, o, o, o, b, b },
-                                                        { g, g, o, o, o, o, g, g },
-                                                        { g, y, w, r, r, w, y, g },
-                                                        { g, g, w, r, r, w, g, g },
-                                                        { g, g, y, g, g, y, g, g }};
+    public string[] ColorSolArr4 = new string[] { b, b, b, b, b, b, b, b ,
+                                                         b, b, w, w, w, w, b, b ,
+                                                         b, b, bl, w, w, bl, b, b ,
+                                                         b, b, o, o, o, o, b, b ,
+                                                         g, g, o, o, o, o, g, g ,
+                                                         g, y, w, r, r, w, y, g ,
+                                                         g, g, w, r, r, w, g, g ,
+                                                         g, g, y, g, g, y, g, g };
 
 
-    public string[,] ColorSolArr5 = new string[8, 8] { {b, bl, bl, b, b, b, b, bl },
-                                                        { b, b, y, o, b, b, b, o },
-                                                        { b, b, b, y, y, y, y, o },
-                                                        { o, o, b, y, bl, y, y, bl },
-                                                        { o, o, b, r, y, y, y, o },
-                                                        { b, y, b, y, o, o, o, b },
-                                                        { b, y, y, o, y, o, y, b },
-                                                        { g, g, y, o, y, y, o, g }};
+    public string[] ColorSolArr5 = new string[] { b, bl, bl, b, b, b, b, bl ,
+                                                         b, b, y, o, b, b, b, o ,
+                                                         b, b, b, y, y, y, y, o ,
+                                                         o, o, y, y, bl, y, y, bl ,
+                                                         o, o, b, r, y, y, y, o ,
+                                                         b, y, b, y, o, o, o, b ,
+                                                         b, y, y, o, y, o, y, b ,
+                                                         g, g, y, o, y, y, o, g };
 
-    public string[] ColorSolArr6 = new string[] {w, w, w, w, w, w, w, w , w,
-                                                w, w, w, w, w, w, w , w, w, w, w, w, w, w, w ,w, w, w, w, w, w, w, w 
-                                                        , w, w, w, w, w, w, w, w ,
-                                                         w, w, w, w, w, w, w, w ,
-                                                         w, w, w, w, w, w, w, w ,
-                                                         w, w, w, w, w, w, w, b };
-
-
-
+    
 
 
     public void Update()
     {
-        VerifyColor(ColorSolArr3, CubeArray);
+        VerifyColor(ColorSolArr5, CubeArray, "Level2");
+        //CheckScene();
+    }
+
+
+    //checks which scene is on and uses the correct array per level
+    public void CheckScene()
+    {
+        if (SceneManager.GetActiveScene().Equals("Level1"))
+        {
+            VerifyColor(ColorSolArr1, CubeArray, "Level2");
+        }
+
+        if (SceneManager.GetActiveScene().Equals("Level2"))
+        {
+            VerifyColor(ColorSolArr1, CubeArray, "Level3");
+        }
+
+        if (SceneManager.GetActiveScene().Equals("Level3"))
+        {
+            VerifyColor(ColorSolArr1, CubeArray, "Level4");
+        }
+
+        if (SceneManager.GetActiveScene().Equals("Level4"))
+        {
+            VerifyColor(ColorSolArr1, CubeArray, "Level5");
+        }
+
+        if (SceneManager.GetActiveScene().Equals("Level5"))
+        {
+            VerifyColor(ColorSolArr1, CubeArray, "EndScene");
+        }
+
+
     }
 
 
 
+
     //method to check if the colors of the cube matches what it should be 
-    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr)
+    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr , string nextLevel)
     {
         for (int k = 0; k < CubeArr.Length; k++)
         {
             if (!getColor(CubeArr[k]).Equals(ColorSolArr[k]))
             return false;    
             }
+
         //load the next scene
         SceneManager.LoadScene(nextLevel);
         return true;
     }
+
+
 
     //returns the color of the cube as a string to compare
     private string getColor(GameObject cube)
