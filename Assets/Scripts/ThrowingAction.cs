@@ -20,6 +20,8 @@ public class ThrowingAction : MonoBehaviour
 
     bool readyToThrow;
 
+    public AudioSource shootingSound;
+
 
 
 
@@ -27,6 +29,7 @@ public class ThrowingAction : MonoBehaviour
     void Start()
     {
         readyToThrow = true;
+        shootingSound = GetComponent<AudioSource>();
         
 
     }
@@ -37,6 +40,7 @@ public class ThrowingAction : MonoBehaviour
         if (Input.GetKeyDown(throwKey) && readyToThrow && totalThrows > 0)
         {
             Throw();
+            shootingSound.Play();
         }
     }
 
@@ -65,6 +69,8 @@ public class ThrowingAction : MonoBehaviour
         Vector3 forceToAdd = forceDirection * throwSpeed + transform.up ;
 
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
+
+        
 
         totalThrows--;
 

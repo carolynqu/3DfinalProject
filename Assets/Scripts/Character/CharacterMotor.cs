@@ -17,6 +17,8 @@ public class CharacterMotor : MonoBehaviour
 	public CharacterMotorMovingPlatform movingPlatform = new CharacterMotorMovingPlatform();
 	public CharacterMotorSliding sliding = new CharacterMotorSliding();
 
+
+
 	// For the next variables, [HideInInspector] tells Unity to not serialize the variable or show it in the inspector view.
 	// Very handy for organization!
 
