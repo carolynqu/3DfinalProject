@@ -76,8 +76,8 @@ public class MaterialChecker : MonoBehaviour
 
     public void Update()
     {
-        VerifyColor(ColorSolArr5, CubeArray, "Level2");
-        //CheckScene();
+        //VerifyColor(ColorSolArr5, CubeArray, "Level2");
+        CheckScene();
     }
 
 
