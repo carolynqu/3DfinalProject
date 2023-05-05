@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MaterialChecker : MonoBehaviour
 {
-
+    public string nextLevel = "";
     //Names of colors to add to arrays
     public static string bl = "black";
     public static string b = "blue";
@@ -71,7 +71,13 @@ public class MaterialChecker : MonoBehaviour
                                                          b, y, y, o, y, o, y, b ,
                                                          g, g, y, o, y, y, o, g };
 
-    
+    public void Start()
+    {
+        if (nextLevel == "")
+        {
+            nextLevel = SceneManager.GetActiveScene().name;
+        }
+    }
 
 
     public void Update()

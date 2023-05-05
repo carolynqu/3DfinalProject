@@ -1,14 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-// Require a character controller to be attached to the same game object
 [RequireComponent(typeof(CharacterMotor))]
 [AddComponentMenu("Character/FPS Input Controller")]
 public class FPSInputController : MonoBehaviour
 {
 	private CharacterMotor motor;
 
-	// Use this for initialization
 	void Awake()
 	{
 		motor = GetComponent<CharacterMotor>();
@@ -25,7 +23,6 @@ public class FPSInputController : MonoBehaviour
 			float directionLength = directionVector.magnitude;
 			directionVector = directionVector / directionLength;
 
-			// Make sure the length is no bigger than 1
 			directionLength = Mathf.Min(1, directionLength);
 
 			directionLength = directionLength * directionLength;

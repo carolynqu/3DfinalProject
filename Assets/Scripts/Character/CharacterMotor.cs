@@ -19,15 +19,10 @@ public class CharacterMotor : MonoBehaviour
 
 
 
-	// For the next variables, [HideInInspector] tells Unity to not serialize the variable or show it in the inspector view.
-	// Very handy for organization!
-
-	// The current global direction we want the character to move in.
 	[HideInInspector]
 	public Vector3 inputMoveDirection = Vector3.zero;
 
-	// Is the jump button held down? We use this interface instead of checking
-	// for the jump button directly so this script can also be used by AIs.
+
 	[HideInInspector]
 	public bool inputJump = false;
 
@@ -63,10 +58,7 @@ public class CharacterMotor : MonoBehaviour
 		public float gravity = 10.0f;
 		public float maxFallSpeed = 20.0f;
 
-		// For the next variables, [HideInInspector] tells Unity to not serialize the variable or show it in the inspector view.
-		// Very handy for organization!
-
-		// The last collision flags returned from controller.Move
+	
 		[HideInInspector]
 		public CollisionFlags collisionFlags;
 
@@ -114,15 +106,10 @@ public class CharacterMotor : MonoBehaviour
 		// 0 means a fully vertical jump and 1 means fully perpendicular.
 		public float perpAmount = 0.0f;
 
-		// How much does the character jump out perpendicular to the surface on too steep surfaces?
-		// 0 means a fully vertical jump and 1 means fully perpendicular.
+		
 		public float steepPerpAmount = 0.5f;
 
-		// For the next variables, [HideInInspector] tells Unity to not serialize the variable or show it in the inspector view.
-		// Very handy for organization!
-
-		// Are we jumping? (Initiated with jump button and not grounded yet)
-		// To see if we are just in the air (initiated by jumping OR falling) see the grounded variable.
+		
 		[HideInInspector]
 		public bool jumping = false;
 
@@ -178,18 +165,16 @@ public class CharacterMotor : MonoBehaviour
 	[System.Serializable]
 	public class CharacterMotorSliding
 	{
-		// Does the character slide on too steep surfaces?
+		
 		public bool enabled = true;
 
-		// How fast does the character slide on steep surfaces?
+		
 		public float slidingSpeed = 15;
 
-		// How much can the player control the sliding direction?
-		// If the value is 0.5 the player can slide sideways with half the speed of the downwards sliding speed.
+		
 		public float sidewaysControl = 1.0f;
 
-		// How much can the player influence the sliding speed?
-		// If the value is 0.5 the player can speed the sliding up to 150% or slow it down to 50%.
+		
 		public float speedControl = 0.4f;
 	}
 
@@ -237,8 +222,7 @@ public class CharacterMotor : MonoBehaviour
 		// We always want the movement to be framerate independent.  Multiplying by Time.deltaTime does this.
 		Vector3 currentMovementOffset = velocity * Time.deltaTime;
 
-		// Find out how much we need to push towards the ground to avoid loosing grouning
-		// when walking down a step or over a sharp change in slope.
+		
 		float pushDownOffset = Mathf.Max(controller.stepOffset, new Vector3(currentMovementOffset.x, 0, currentMovementOffset.z).magnitude);
 		if (grounded)
 			currentMovementOffset -= pushDownOffset * Vector3.up;
@@ -291,8 +275,7 @@ public class CharacterMotor : MonoBehaviour
 			}
 			else
 			{
-				// The upwards movement of the CharacterController has been blocked.
-				// This is treated like a ceiling collision - stop further jumping here.
+				
 				jumping.holdingJumpButton = false;
 			}
 		}
@@ -328,8 +311,7 @@ public class CharacterMotor : MonoBehaviour
 		// Moving platforms support
 		if (MoveWithPlatform())
 		{
-			// Use the center of the lower half sphere of the capsule as reference point.
-			// This works best when the character is standing on moving tilting platforms. 
+			
 			movingPlatform.activeGlobalPoint = tr.position + Vector3.up * (controller.center.y - controller.height * 0.5f + controller.radius);
 			movingPlatform.activeLocalPoint = movingPlatform.activePlatform.InverseTransformPoint(movingPlatform.activeGlobalPoint);
 
@@ -421,9 +403,8 @@ public class CharacterMotor : MonoBehaviour
 
 		if (grounded)
 		{
-			// When going uphill, the CharacterController will automatically move up by the needed amount.
-			// Not moving it upwards manually prevent risk of lifting off from the ground.
-			// When going downhill, DO move down manually, as gravity is not enough on steep hills.
+			
+			
 			velocity.y = Mathf.Min(velocity.y, 0);
 		}
 
@@ -466,11 +447,7 @@ public class CharacterMotor : MonoBehaviour
 
 		if (grounded)
 		{
-			// Jump only if the jump button was pressed down in the last 0.2 seconds.
-			// We use this check instead of checking if it's pressed down right now
-			// because players will often try to jump in the exact moment when hitting the ground after a jump
-			// and if they hit the button a fraction of a second too soon and no new jump happens as a consequence,
-			// it's confusing and it feels like the game is buggy.
+			
 			if (jumping.enabled && canControl && (Time.time - jumping.lastButtonDownTime < 0.2))
 			{
 				grounded = false;
@@ -630,8 +607,7 @@ public class CharacterMotor : MonoBehaviour
 		canControl = controllable;
 	}
 
-	// Project a direction onto elliptical quater segments based on forward, sideways, and backwards speed.
-	// The function returns the length of the resulting vector.
+	
 	public float MaxSpeedInDirection(Vector3 desiredMovementDirection)
 	{
 		if (desiredMovementDirection == Vector3.zero)
