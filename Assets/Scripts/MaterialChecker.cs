@@ -65,11 +65,13 @@ public class MaterialChecker : MonoBehaviour
     public string[] ColorSolArr5 = new string[] { b, bl, bl, b, b, b, b, bl ,
                                                          b, b, y, o, b, b, b, o ,
                                                          b, b, b, y, y, y, y, o ,
-                                                         o, o, b, y, bl, y, y, bl ,
+                                                         o, o, b, y, bl, y, y, bl,
                                                          o, o, b, r, y, y, y, o ,
                                                          b, y, b, y, o, o, o, b ,
                                                          b, y, y, o, y, o, y, b ,
                                                          g, g, y, o, y, y, o, g };
+
+    
 
     private void Start()
     {
