@@ -100,27 +100,27 @@ public class MaterialChecker : MonoBehaviour
         if (currentSceneName.Equals("Level1"))
         {
 
-            return VerifyColor(ColorSolArr1, CubeArray, "Level2");
+            return VerifyColor(ColorSolArr1, CubeArray);
         }
 
         if (currentSceneName.Equals("Level2"))
         {
-            return VerifyColor(ColorSolArr2, CubeArray, "Level3");
+            return VerifyColor(ColorSolArr2, CubeArray);
         }
 
         if (currentSceneName.Equals("Level3"))
         {
-            return VerifyColor(ColorSolArr3, CubeArray, "Level4");
+            return VerifyColor(ColorSolArr3, CubeArray);
         }
 
         if (currentSceneName.Equals("Level4"))
         {
-            return VerifyColor(ColorSolArr4, CubeArray, "Level5");
+            return VerifyColor(ColorSolArr4, CubeArray);
         }
 
         if (currentSceneName.Equals("Level5"))
         {
-            return VerifyColor(ColorSolArr5, CubeArray, "EndScreen");
+            return VerifyColor(ColorSolArr5, CubeArray);
         }
 
         return false;
@@ -130,7 +130,7 @@ public class MaterialChecker : MonoBehaviour
 
 
     //method to check if the colors of the cube matches what it should be 
-    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr, string nextScene)
+    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr)
     {
         for (int k = 0; k < CubeArr.Length; k++)
         {
@@ -138,8 +138,6 @@ public class MaterialChecker : MonoBehaviour
             return false;    
             }
 
-        //load the next scene
-        //SceneManager.LoadScene(nextScene);
         return true;
     }
 
