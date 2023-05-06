@@ -18,6 +18,7 @@ public class Pixel : MonoBehaviour
     {
     }
 
+    //check what color the object it is colliding with is
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<MeshRenderer>().material.name.Contains("Black"))
@@ -49,6 +50,8 @@ public class Pixel : MonoBehaviour
             currentColor = BlockColors[6];
 
         }
+
+        //change the color to be the color of the projectile
         GetComponent<Renderer>().material = currentColor;
     }
 }
