@@ -71,7 +71,7 @@ public class MaterialChecker : MonoBehaviour
                                                          b, y, y, o, y, o, y, b ,
                                                          g, g, y, o, y, y, o, g };
 
-    public void Start()
+    private void Start()
     {
         if (nextLevel == "")
         {
