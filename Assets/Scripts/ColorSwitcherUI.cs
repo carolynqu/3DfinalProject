@@ -16,6 +16,8 @@ public class ColorSwitcherUI : MonoBehaviour
 
     void Update()
     {
+
+        //display the correct sprite depending on what color is present
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             image.sprite = sprites[0];

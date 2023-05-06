@@ -7,13 +7,8 @@ public class ColorSwitcher : MonoBehaviour
 {
     public GameObject targetObject;
     private Renderer obj;
-    //black = new Color(0, 0, 0);
-    //blue = new Color(5, 172, 255);
-    //green = new Color(67, 255, 38);
-    //orange = new Color(255, 149, 0);
-    //red = new Color(255, 38, 38);
-    //white = new Color (255, 255, 255);
-    //yellow = new Color (255, 210, 31);
+
+    //booleans for colors
     public static bool blue = false;
     public static bool black = false;
     public static bool green = false;
@@ -24,15 +19,18 @@ public class ColorSwitcher : MonoBehaviour
 
     public Material [] colors;
 
-    private int currentColorIndex = 0;
+    
     private Material currentColor;
+
     private void Start()
     {
         obj = targetObject.GetComponent<Renderer>();
         currentColor = colors[0];
     }
+
     void Update()
     {
+        //check what key is down and changing the r
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentColor = colors[0];
@@ -79,6 +77,9 @@ public class ColorSwitcher : MonoBehaviour
         obj.material = currentColor;
     }
 
+
+    //caled to reset the colors to all be false
+    //except the one we want to be true
     void ResetBool()
     {
         blue = false;
