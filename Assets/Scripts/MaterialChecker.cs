@@ -90,29 +90,30 @@ public class MaterialChecker : MonoBehaviour
     //checks which scene is on and uses the correct array per level
     public void CheckScene()
     {
-        if (SceneManager.GetActiveScene().Equals("Level1"))
+        if (SceneManager.GetActiveScene().Equals(1))
         {
-            VerifyColor(ColorSolArr1, CubeArray, "Level2");
+      
+            VerifyColor(ColorSolArr1, CubeArray);
         }
 
-        if (SceneManager.GetActiveScene().Equals("Level2"))
+        if (SceneManager.GetActiveScene().Equals(2))
         {
-            VerifyColor(ColorSolArr1, CubeArray, "Level3");
+            VerifyColor(ColorSolArr1, CubeArray);
         }
 
-        if (SceneManager.GetActiveScene().Equals("Level3"))
+        if (SceneManager.GetActiveScene().Equals(3))
         {
-            VerifyColor(ColorSolArr1, CubeArray, "Level4");
+            VerifyColor(ColorSolArr1, CubeArray);
         }
 
-        if (SceneManager.GetActiveScene().Equals("Level4"))
+        if (SceneManager.GetActiveScene().Equals(4))
         {
-            VerifyColor(ColorSolArr1, CubeArray, "Level5");
+            VerifyColor(ColorSolArr1, CubeArray);
         }
 
-        if (SceneManager.GetActiveScene().Equals("Level5"))
+        if (SceneManager.GetActiveScene().Equals(5))
         {
-            VerifyColor(ColorSolArr1, CubeArray, "EndScene");
+            VerifyColor(ColorSolArr1, CubeArray);
         }
 
 
@@ -122,7 +123,7 @@ public class MaterialChecker : MonoBehaviour
 
 
     //method to check if the colors of the cube matches what it should be 
-    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr , string nextLevel)
+    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr)
     {
         for (int k = 0; k < CubeArr.Length; k++)
         {
@@ -131,8 +132,7 @@ public class MaterialChecker : MonoBehaviour
             }
 
         //load the next scene
-        SceneManager.LoadScene(nextLevel);
-        nextLevel = "";
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         return true;
     }
 
