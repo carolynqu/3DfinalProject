@@ -7,9 +7,15 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+<<<<<<< Updated upstream
 	"last_search.DA949528" = "GameG"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "asset"
+=======
+	"last_search.DA949528" = "event"
+	"OpenInspectorPreview.DA949528" = "0"
+	"currentGroup.DA949528" = "menu"
+>>>>>>> Stashed changes
 }
 providers = {
 	find = {
@@ -56,8 +62,12 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+<<<<<<< Updated upstream
 	"G"
 	"A"
+=======
+	"ev"
+>>>>>>> Stashed changes
 ]
 searchItemFavorites = [
 ]
