@@ -82,41 +82,48 @@ public class MaterialChecker : MonoBehaviour
 
     public void Update()
     {
+
         //VerifyColor(ColorSolArr5, CubeArray, "Level2");
-        CheckScene();
+        if (CheckScene())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
     }
 
 
     //checks which scene is on and uses the correct array per level
-    public void CheckScene()
+    public bool CheckScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
 
         if (currentSceneName.Equals("Level1"))
         {
 
-            VerifyColor(ColorSolArr1, CubeArray, "Level2");
+            return VerifyColor(ColorSolArr1, CubeArray, "Level2");
         }
 
         if (currentSceneName.Equals("Level2"))
         {
-            VerifyColor(ColorSolArr2, CubeArray, "Level3");
+            return VerifyColor(ColorSolArr2, CubeArray, "Level3");
         }
 
         if (currentSceneName.Equals("Level3"))
         {
-            VerifyColor(ColorSolArr3, CubeArray, "Level4");
+            return VerifyColor(ColorSolArr3, CubeArray, "Level4");
         }
 
         if (currentSceneName.Equals("Level4"))
         {
-            VerifyColor(ColorSolArr4, CubeArray, "Level5");
+            return VerifyColor(ColorSolArr4, CubeArray, "Level5");
         }
 
         if (currentSceneName.Equals("Level5"))
         {
-            VerifyColor(ColorSolArr5, CubeArray, "EndScreen");
+            return VerifyColor(ColorSolArr5, CubeArray, "EndScreen");
         }
+
+        return false;
     }
 
 
@@ -132,7 +139,7 @@ public class MaterialChecker : MonoBehaviour
             }
 
         //load the next scene
-        SceneManager.LoadScene(nextScene);
+        //SceneManager.LoadScene(nextScene);
         return true;
     }
 
