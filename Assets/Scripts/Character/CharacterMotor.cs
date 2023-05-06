@@ -80,30 +80,25 @@ public class CharacterMotor : MonoBehaviour
 	public enum MovementTransferOnJump
 	{
 		None,
-		// The jump is not affected by velocity of floor at all.
 		InitTransfer,
-		// Jump gets its initial velocity from the floor, then gradualy comes to a stop.
 		PermaTransfer,
-		// Jump gets its initial velocity from the floor, and keeps that velocity until landing.
 		PermaLocked
-		// Jump is relative to the movement of the last touched floor and will move together with that floor.
 	}
 
-	// We will contain all the jumping related variables in one helper class for clarity.
+	
 	[System.Serializable]
 	public class CharacterMotorJumping
 	{
 		// Can the character jump?
 		public bool enabled = true;
 
-		// How high do we jump when pressing jump and letting go immediately
+		// How high do we jump when pressing jump 
 		public float baseHeight = 1.0f;
 
 		// We add extraHeight units (meters) on top when holding the button down longer while jumping
 		public float extraHeight = 4.1f;
 
 		// How much does the character jump out perpendicular to the surface on walkable surfaces?
-		// 0 means a fully vertical jump and 1 means fully perpendicular.
 		public float perpAmount = 0.0f;
 
 		
@@ -218,8 +213,6 @@ public class CharacterMotor : MonoBehaviour
 
 		// Save lastPosition for velocity calculation.
 		Vector3 lastPosition = tr.position;
-
-		// We always want the movement to be framerate independent.  Multiplying by Time.deltaTime does this.
 		Vector3 currentMovementOffset = velocity * Time.deltaTime;
 
 		
@@ -254,7 +247,6 @@ public class CharacterMotor : MonoBehaviour
 		Vector3 newHVelocity = new Vector3(movement.velocity.x, 0, movement.velocity.z);
 
 		// The CharacterController can be moved in unwanted directions when colliding with things.
-		// We want to prevent this from influencing the recorded velocity.
 		if (oldHVelocity == Vector3.zero)
 		{
 			movement.velocity = new Vector3(0, movement.velocity.y, 0);
@@ -269,8 +261,6 @@ public class CharacterMotor : MonoBehaviour
 		{
 			if (movement.velocity.y < 0)
 			{
-				// Something is forcing the CharacterController down faster than it should.
-				// Ignore this
 				movement.velocity.y = velocity.y;
 			}
 			else
@@ -294,8 +284,7 @@ public class CharacterMotor : MonoBehaviour
 			}
 
 			SendMessage("OnFall", SendMessageOptions.DontRequireReceiver);
-			// We pushed the character down to ensure it would stay on the ground if there was any.
-			// But there wasn't so now we cancel the downwards offset to make the fall smoother.
+			// Cancel the downwards offset to make the fall smoother.
 			tr.position += pushDownOffset * Vector3.up;
 		}
 		// We were not grounded but just landed on something
@@ -371,7 +360,6 @@ public class CharacterMotor : MonoBehaviour
 			Vector3 projectedMoveDir = Vector3.Project(inputMoveDirection, desiredVelocity);
 			// Add the sliding direction, the spped control, and the sideways control vectors
 			desiredVelocity = desiredVelocity + projectedMoveDir * sliding.speedControl + (inputMoveDirection - projectedMoveDir) * sliding.sidewaysControl;
-			// Multiply with the sliding speed
 			desiredVelocity *= sliding.slidingSpeed;
 		}
 		else
