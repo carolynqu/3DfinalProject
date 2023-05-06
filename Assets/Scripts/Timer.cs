@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
+        //check if timer is running
         if (isTimerRunning)
         {
             currentTime -= Time.deltaTime;
@@ -34,17 +35,21 @@ public class Timer : MonoBehaviour
         }
     }
 
+    //method to start timer
     public void StartTimer()
     {
         currentTime = totalTime;
         isTimerRunning = true;
     }
 
+
+    //method to stop timer
     public void StopTimer()
     {
         isTimerRunning = false;
     }
 
+    //action for when timer is complete
     private void TimerComplete()
     {
         Debug.Log("Timer Complete!");
@@ -52,6 +57,8 @@ public class Timer : MonoBehaviour
         // Perform any desired actions when the timer completes
     }
 
+
+    //format the timer for the user
     private string FormatTime(float time)
     {
         int minutes = Mathf.FloorToInt(time / 60);

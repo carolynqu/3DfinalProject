@@ -52,7 +52,6 @@ public class ThrowingAction : MonoBehaviour
         //instatiate object to throw 
         GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
 
-        //get rigidbody component
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
         //calculate the direction
@@ -60,17 +59,16 @@ public class ThrowingAction : MonoBehaviour
 
         RaycastHit hit;
 
+        //raycast directly infront of the throwing point
         if(Physics.Raycast(cam.position, cam.forward, out hit , 500f))
         {
             forceDirection = (hit.point - attackPoint.position).normalized;
         }
 
-        //add force
+        //add force to the ball
         Vector3 forceToAdd = forceDirection * throwSpeed + transform.up ;
 
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
-
-        
 
         totalThrows--;
 
@@ -78,11 +76,9 @@ public class ThrowingAction : MonoBehaviour
         Invoke(nameof(ResetThrows), throwCoolDown);
 
 
-
-
     }
 
-
+    //allows for cooldown for the user
     private void ResetThrows()
     {
         readyToThrow = true;
