@@ -90,40 +90,40 @@ public class MaterialChecker : MonoBehaviour
     //checks which scene is on and uses the correct array per level
     public void CheckScene()
     {
-        if (SceneManager.GetActiveScene().Equals(1))
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName.Equals("Level1"))
         {
-      
-            VerifyColor(ColorSolArr1, CubeArray);
+
+            VerifyColor(ColorSolArr1, CubeArray, "Level2");
         }
 
-        if (SceneManager.GetActiveScene().Equals(2))
+        if (currentSceneName.Equals("Level2"))
         {
-            VerifyColor(ColorSolArr1, CubeArray);
+            VerifyColor(ColorSolArr2, CubeArray, "Level3");
         }
 
-        if (SceneManager.GetActiveScene().Equals(3))
+        if (currentSceneName.Equals("Level3"))
         {
-            VerifyColor(ColorSolArr1, CubeArray);
+            VerifyColor(ColorSolArr3, CubeArray, "Level4");
         }
 
-        if (SceneManager.GetActiveScene().Equals(4))
+        if (currentSceneName.Equals("Level4"))
         {
-            VerifyColor(ColorSolArr1, CubeArray);
+            VerifyColor(ColorSolArr4, CubeArray, "Level5");
         }
 
-        if (SceneManager.GetActiveScene().Equals(5))
+        if (currentSceneName.Equals("Level5"))
         {
-            VerifyColor(ColorSolArr1, CubeArray);
+            VerifyColor(ColorSolArr5, CubeArray, "EndScreen");
         }
-
-
     }
 
 
 
 
     //method to check if the colors of the cube matches what it should be 
-    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr)
+    public bool VerifyColor(string[] ColorSolArr, GameObject[] CubeArr, string nextScene)
     {
         for (int k = 0; k < CubeArr.Length; k++)
         {
@@ -132,7 +132,7 @@ public class MaterialChecker : MonoBehaviour
             }
 
         //load the next scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(nextScene);
         return true;
     }
 
