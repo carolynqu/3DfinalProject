@@ -132,6 +132,7 @@ public class MaterialChecker : MonoBehaviour
 
         //load the next scene
         SceneManager.LoadScene(nextLevel);
+        nextLevel = "";
         return true;
     }
 
